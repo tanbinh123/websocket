@@ -37,7 +37,7 @@
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             setConnected(true);
-            stompClient.subscribe('/topic/test1', function (data) {
+            stompClient.subscribe('/topic/test2', function (data) {
                 // $('.message span.content').html(data.body);
                 console.log(data.body);
                 // alert(data.body);

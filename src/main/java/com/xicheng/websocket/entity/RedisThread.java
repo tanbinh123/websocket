@@ -1,7 +1,6 @@
 package com.xicheng.websocket.entity;
 
 
-import com.xicheng.websocket.util.DebugIdUtil;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 public class RedisThread extends Thread {
@@ -27,13 +26,8 @@ public class RedisThread extends Thread {
 
     @Override
     public void run() {
-        if (!DebugIdUtil.ID_MAP.containsKey(this.threadName)) {
-            System.out.println("stop--------------");
-            this.stop();
-        }
-        this.simpMessagingTemplate.convertAndSend("/topic/test", threadName);
-        this.setName(threadName);
-        // if (!DebugIdUtil.ID_MAP.containsKey(this.threadName)) {
 
+        this.setName(threadName);
+        this.simpMessagingTemplate.convertAndSend("/topic/test" + threadName, threadName);
     }
 }
